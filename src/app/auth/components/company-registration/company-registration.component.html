@@ -1,0 +1,64 @@
+<mat-card>
+  <mat-card-header><h1>Registro de empresa</h1></mat-card-header>
+  <mat-card-content>
+    <!-- Enlazamiento con los campos del formGroup -->
+    <form class="grid" [formGroup]="userRegistrerForm">
+      <mat-form-field class="col-12">
+        <mat-label>Número de cedula</mat-label>
+        <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
+        <input
+          matInput
+          type="text"
+          required
+          formControlName="cedula"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Nombre de usuario</mat-label>
+        <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
+        <input
+          matInput
+          type="text"
+          required
+          formControlName="nombreUsuario"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Correo electrónico</mat-label>
+        <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
+        <input
+          matInput
+          type="text"
+          required
+          formControlName="correoElectronico"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Contraseña</mat-label>
+        <input
+        matInput
+        required
+        formControlName="contraseña"
+        >
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-content>
+    <div class="flex justify-content-between">
+
+      <span></span>
+
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="onRegistrer()"
+      >
+        <mat-icon>login</mat-icon>
+        Registrer
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

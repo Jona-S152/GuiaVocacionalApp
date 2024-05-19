@@ -1,0 +1,4 @@
+<div class="flex flex-column">
+  <company-registration *ngIf="roleSelected === 'Empresa'"></company-registration>
+  <user-registration *ngIf="roleSelected === 'Postulante'"></user-registration>
+</div>
