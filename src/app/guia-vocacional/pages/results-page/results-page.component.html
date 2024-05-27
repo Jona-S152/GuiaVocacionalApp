@@ -1,21 +1,14 @@
 <mat-list>
   <h1><mat-label>Resultados</mat-label></h1>
-  <mat-list-item>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quisquam maiores nemo soluta atque corporis dignissimos esse voluptatem omnis voluptatum sequi, blanditiis id quos, ut molestias quae! Nihil, qui est.
+  <br>
+  <h3><mat-label>Vocaciones:</mat-label></h3>
+  <mat-list-item *ngFor="let vocacion of vocaciones">
+    {{ vocacion }}
   </mat-list-item>
-  <mat-list-item>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quisquam maiores nemo soluta atque corporis dignissimos esse voluptatem omnis voluptatum sequi, blanditiis id quos, ut molestias quae! Nihil, qui est.
-  </mat-list-item>
-  <mat-list-item>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quisquam maiores nemo soluta atque corporis dignissimos esse voluptatem omnis voluptatum sequi, blanditiis id quos, ut molestias quae! Nihil, qui est.
-  </mat-list-item>
-  <mat-list-item>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quisquam maiores nemo soluta atque corporis dignissimos esse voluptatem omnis voluptatum sequi, blanditiis id quos, ut molestias quae! Nihil, qui est.
-  </mat-list-item>
-  <mat-list-item>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quisquam maiores nemo soluta atque corporis dignissimos esse voluptatem omnis voluptatum sequi, blanditiis id quos, ut molestias quae! Nihil, qui est.
-  </mat-list-item>
-  <mat-list-item>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quisquam maiores nemo soluta atque corporis dignissimos esse voluptatem omnis voluptatum sequi, blanditiis id quos, ut molestias quae! Nihil, qui est.
+
+  <br>
+  <h3><mat-label>Aptitudes:</mat-label></h3>
+  <mat-list-item *ngFor="let aptitud of aptitudes">
+    {{ aptitud }}
   </mat-list-item>
 </mat-list>

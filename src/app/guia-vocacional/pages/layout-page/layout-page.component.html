@@ -23,21 +23,26 @@
       <mat-icon>menu</mat-icon>
     </button>
 
-    <!-- <button *ngIf="!isAuthorize" mat-icon-button >
-      <mat-icon>store</mat-icon>
-    </button> -->
+    <button mat-icon-button [routerLink]="'/guia-vocacional/'" >
+      <mat-icon>home</mat-icon>
+    </button>
 
     <mat-label *ngIf="false" class="mr-3">Bienvenido </mat-label>
 
     <span class="spacer"></span>
 
-        <button mat-button [routerLink]="'/auth/login'">
-          Login
-        </button>
-
-    <button mat-button [matMenuTriggerFor]="menu">
-      registrer
+    <button *ngIf="!isAuthenticated" mat-button [routerLink]="'/auth/login'">
+      <strong>Iniciar sesion</strong>
     </button>
+
+    <button *ngIf="!isAuthenticated" mat-button [matMenuTriggerFor]="menu">
+      <strong>Crear cuenta</strong>
+    </button>
+
+    <button *ngIf="isAuthenticated" mat-button (click)="onLogout()">
+      <strong>Cerrar sesion</strong>
+    </button>
+
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="onSelected('Empresa')">Empresa</button>
       <button mat-menu-item (click)="onSelected('Postulante')">Postulante</button>

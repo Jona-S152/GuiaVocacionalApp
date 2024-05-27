@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UserLogin } from '../../interfaces/UserLogin';
 import { GuiaVocacionalService } from '../../../guia-vocacional/services/guia-vocacional.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-page',
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
 export class LoginPageComponent {
 
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   public hide : boolean = true;
 
@@ -28,8 +31,18 @@ export class LoginPageComponent {
 
   public onLogin(){
     // TODO: Agregar servicio login
-
-    this.router.navigate(['/guia-vocacional/chatbot']);
+    if (this.authService.getRandomBoolean()) {
+      this.authService.login();
+      this.router.navigate(['/guia-vocacional/chatbot']);
+    } else {
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Credenciales incorrectas",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   }
 
 }
