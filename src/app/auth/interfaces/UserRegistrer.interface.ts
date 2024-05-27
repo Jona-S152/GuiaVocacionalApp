@@ -6,7 +6,7 @@ export interface UserRegistrer {
   rol:                 string;
   nombre:              string;
   apellido:            string;
-  edad:                string;
+  edad:                number;
   estudiorealizado:    string;
   descripcionpersonal: string;
 }

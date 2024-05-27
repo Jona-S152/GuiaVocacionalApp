@@ -22,7 +22,7 @@ export class UserRegistrationComponent {
       contraseña : new FormControl<string>('', { nonNullable: true }),
       nombre: new FormControl<string>('', { nonNullable: true }),
       apellido: new FormControl<string>('', { nonNullable: true }),
-      edad: new FormControl<string>('', { nonNullable: true }),
+      edad: new FormControl<number>(0, { nonNullable: true }),
       estudiorealizado: new FormControl<string>(''),
       descripcionpersonal: new FormControl<string>('', { nonNullable: true })
     });

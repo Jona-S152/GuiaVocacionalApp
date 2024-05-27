@@ -26,6 +26,7 @@ export class ChatbotComponent {
     this.gVocacionalService.getMessages()
       .subscribe( {
         next: (res) => {
+
           if (
             res.data[0].messages[res.data[0].messages.length - 1].content.includes('Resultado') &&
             res.data[0].messages[res.data[0].messages.length - 1].role === Role.Assistant
@@ -48,12 +49,14 @@ export class ChatbotComponent {
 
             this.resultados = { aptitudes: this.aptitudes, vocaciones: this.vocaciones}
 
-            this.gVocacionalService.setResultados(this.resultados);
-
             localStorage.setItem('resultados', JSON.stringify(this.resultados));
 
-            console.log( 'Aptitudes:', this.aptitudes );
-            console.log( 'Vocaciones:', this.vocaciones );
+            this.gVocacionalService.guardarResultados(this.resultados)
+              .subscribe({
+                next: () => {
+                  console.log('Guardado');
+                }
+              });
 
             this.router.navigate(['/guia-vocacional/results']);
             // console.log(res.data[0].messages[res.data[0].messages.length - 1].content);

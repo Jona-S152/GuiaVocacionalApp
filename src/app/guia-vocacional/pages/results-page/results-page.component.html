@@ -1,14 +1,32 @@
-<mat-list>
-  <h1><mat-label>Resultados</mat-label></h1>
-  <br>
-  <h3><mat-label>Vocaciones:</mat-label></h3>
-  <mat-list-item *ngFor="let vocacion of vocaciones">
-    {{ vocacion }}
-  </mat-list-item>
+<h1><mat-label>Resultados</mat-label></h1>
+<mat-divider></mat-divider>
+<div class="grid">
+  <div class="col-6 p-2 mt-3">
+      <mat-card>
+        <mat-card-content>
+          <mat-list>
+            <h1><mat-label>Vocaciones:</mat-label></h1>
+            <mat-divider></mat-divider>
+            <mat-list-item *ngFor="let vocacion of vocaciones; let i = index">
+              <strong>{{ i + 1 }}:</strong> {{ vocacion }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+  </div>
 
-  <br>
-  <h3><mat-label>Aptitudes:</mat-label></h3>
-  <mat-list-item *ngFor="let aptitud of aptitudes">
-    {{ aptitud }}
-  </mat-list-item>
-</mat-list>
+    <div class="col-6 p-2 mt-3">
+      <mat-card>
+        <mat-card-content>
+          <mat-list>
+            <h1><mat-label>Aptitudes:</mat-label></h1>
+            <mat-divider></mat-divider>
+            <mat-list-item *ngFor="let aptitud of aptitudes; let i = index">
+              <strong>{{ i + 1 }}:</strong> {{ aptitud }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</div>
+

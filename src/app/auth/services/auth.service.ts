@@ -4,6 +4,7 @@ import { UserRegistrer } from '../interfaces/UserRegistrer.interface';
 import { HttpClient } from '@angular/common/http';
 import { environments } from '../../../environments/environments';
 import { CompanyRegistrer } from '../interfaces/CompanyRegistrer.interface';
+import { UserLogin } from '../interfaces/UserLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,11 @@ export class AuthService {
       );
   }
 
-  login() {
-    localStorage.setItem('token', 'lkasfjalsfjañsldflaksdfhaskdfjasdlfkjasdnvdakslhfioewhfsdaf')
+  login(usuario : UserLogin): Observable<string> {
+
+    return this.http.post<string>(`${ this.baseUrl }/api/authenticar`, usuario);
+
+    // localStorage.setItem('token', 'lkasfjalsfjañsldflaksdfhaskdfjasdlfkjasdnvdakslhfioewhfsdaf')
   }
 
   getRandomBoolean(): boolean {

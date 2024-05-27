@@ -17,21 +17,26 @@ export class ResultsPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const resultado = this.gVocacionalService.currentResultados
+    const miResultado = localStorage.getItem('resultados');
 
-    if (resultado?.aptitudes.length === 0 || resultado?.vocaciones.length === 0){
-      const miResultado = localStorage.getItem('resultados');
+    if (miResultado){
+      const miResultadoFromLstorage = JSON.parse(miResultado);
 
-      if (miResultado !== null){
-        const miResultadoFromLstorage = JSON.parse(miResultado);
+      this.aptitudes = miResultadoFromLstorage.aptitudes;
+      this.vocaciones = miResultadoFromLstorage.vocaciones;
 
-        this.aptitudes = miResultadoFromLstorage.aptitudes;
-        this.vocaciones = miResultadoFromLstorage.vocaciones;
-      }
-    } else {
-      this.aptitudes = resultado?.aptitudes;
-      this.vocaciones = resultado?.vocaciones;
+      console.log(this.aptitudes);
+      console.log(this.vocaciones);
     }
+    // const resultado = this.gVocacionalService.currentResultados
+    // console.log(resultado?.aptitudes[0])
+
+    // if (resultado!.aptitudes.length <= 0 || resultado!.vocaciones.length <= 0){
+
+    // } else {
+    //   this.aptitudes = resultado?.aptitudes;
+    //   this.vocaciones = resultado?.vocaciones;
+    // }
 
   }
 

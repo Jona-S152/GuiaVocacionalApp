@@ -31,18 +31,25 @@ export class LoginPageComponent {
 
   public onLogin(){
     // TODO: Agregar servicio login
-    if (this.authService.getRandomBoolean()) {
-      this.authService.login();
-      this.router.navigate(['/guia-vocacional/chatbot']);
-    } else {
-      Swal.fire({
-        position: "top-end",
-        icon: "warning",
-        title: "Credenciales incorrectas",
-        showConfirmButton: false,
-        timer: 1500
+    this.authService.login(this.currentUserForm)
+      .subscribe({
+        next: res => {
+          localStorage.setItem('token', res),
+          console.log('logueado')
+        },
+        error: err => Swal.fire('Error', 'Credenciales incorrectas', 'error')
       });
-    }
+    this.router.navigate(['/guia-vocacional/chatbot']);
+    // if (this.authService.getRandomBoolean()) {
+    // } else {
+    //   Swal.fire({
+    //     position: "top-end",
+    //     icon: "warning",
+    //     title: "Credenciales incorrectas",
+    //     showConfirmButton: false,
+    //     timer: 1500
+    //   });
+    // }
   }
 
 }

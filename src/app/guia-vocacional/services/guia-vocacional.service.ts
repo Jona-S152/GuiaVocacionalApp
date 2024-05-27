@@ -53,4 +53,8 @@ export class GuiaVocacionalService {
     return this.http.get<ChatbotResponse>(`${ this.baseUrl }/api/v1/get-conversations?chatbotId=${ this.chatbotId }`, { headers });
   }
 
+
+  guardarResultados( restultados : AptitudesVocaciones) : Observable<boolean> {
+    return this.http.post<boolean>(`${ this.baseUrl }/api/authenticar`, restultados);
+  }
 }
