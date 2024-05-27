@@ -1,11 +1,38 @@
 import { Injectable } from '@angular/core';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
+import { UserRegistrer } from '../interfaces/UserRegistrer.interface';
+import { HttpClient } from '@angular/common/http';
+import { environments } from '../../../environments/environments';
+import { CompanyRegistrer } from '../interfaces/CompanyRegistrer.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(
+    private http : HttpClient,
+  ) { }
+
+  private readonly baseUrl = environments.baseUrlApi;
+
+  createAccount( usuario : UserRegistrer ) : Observable<boolean> {
+    return this.http.post<boolean>(`${ this.baseUrl }/api/usuario`, usuario)
+      .pipe(
+        tap( res => res ? true : false
+        ),
+        catchError( err => throwError( () => err))
+      );
+  }
+
+  createCompanyAccount( empresa : CompanyRegistrer) : Observable<boolean> {
+    return this.http.post<boolean>(`${ this.baseUrl }/api/empresa/grabar`, empresa)
+      .pipe(
+        tap( res => res ? true : false
+        ),
+        catchError( err => throwError( () => err))
+      );
+  }
 
   login() {
     localStorage.setItem('token', 'lkasfjalsfjañsldflaksdfhaskdfjasdlfkjasdnvdakslhfioewhfsdaf')

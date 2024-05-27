@@ -50,6 +50,8 @@ export class ChatbotComponent {
 
             this.gVocacionalService.setResultados(this.resultados);
 
+            localStorage.setItem('resultados', JSON.stringify(this.resultados));
+
             console.log( 'Aptitudes:', this.aptitudes );
             console.log( 'Vocaciones:', this.vocaciones );
 

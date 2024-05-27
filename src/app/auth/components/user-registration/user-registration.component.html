@@ -4,13 +4,13 @@
     <!-- Enlazamiento con los campos del formGroup -->
     <form class="grid" [formGroup]="userRegistrerForm">
       <mat-form-field class="col-12">
-        <mat-label>Número de cedula</mat-label>
+        <mat-label>Correo Electrónico</mat-label>
         <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
         <input
           matInput
           type="text"
           required
-          formControlName="cedula"
+          formControlName="correoelectronico"
         />
       </mat-form-field>
 
@@ -21,28 +21,75 @@
           matInput
           type="text"
           required
-          formControlName="nombreUsuario"
-        />
-      </mat-form-field>
-
-      <mat-form-field class="col-12">
-        <mat-label>Correo electrónico</mat-label>
-        <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
-        <input
-          matInput
-          type="text"
-          required
-          formControlName="correoElectronico"
+          formControlName="nickName"
         />
       </mat-form-field>
 
       <mat-form-field class="col-12">
         <mat-label>Contraseña</mat-label>
+        <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
+        <input
+          matInput
+          type="password"
+          required
+          formControlName="contraseña"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Nombre</mat-label>
         <input
         matInput
         required
-        formControlName="contraseña"
+        formControlName="nombre"
         >
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Apellido</mat-label>
+        <input
+        type="text"
+        matInput
+        required
+        formControlName="apellido"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Edad</mat-label>
+        <input
+        type="number"
+        matInput
+        required
+        formControlName="edad"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Estudio realizado</mat-label>
+        <input
+        type="text"
+        matInput
+        formControlName="estudiorealizado"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Descripcion personal</mat-label>
+        <input
+        type="text"
+        matInput
+        required
+        formControlName="descripcionpersonal"
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Choose an option</mat-label>
+        <mat-select>
+          <mat-option #es value="ES" (click)="currentUserForm.opcion = es.value">Estudiante</mat-option>
+          <mat-option #eg value="EG" (click)="currentUserForm.opcion = eg.value">Egresado</mat-option>
+        </mat-select>
       </mat-form-field>
     </form>
   </mat-card-content>

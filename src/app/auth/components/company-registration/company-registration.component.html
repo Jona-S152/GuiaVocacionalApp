@@ -2,18 +2,7 @@
   <mat-card-header><h1>Crear cuenta de empresa</h1></mat-card-header>
   <mat-card-content>
     <!-- Enlazamiento con los campos del formGroup -->
-    <form class="grid" [formGroup]="userRegistrerForm">
-      <mat-form-field class="col-12">
-        <mat-label>Número de cedula</mat-label>
-        <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
-        <input
-          matInput
-          type="text"
-          required
-          formControlName="cedula"
-        />
-      </mat-form-field>
-
+    <form class="grid" [formGroup]="companyRegistrerForm">
       <mat-form-field class="col-12">
         <mat-label>Nombre de usuario</mat-label>
         <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
@@ -21,7 +10,7 @@
           matInput
           type="text"
           required
-          formControlName="nombreUsuario"
+          formControlName="nickname"
         />
       </mat-form-field>
 
@@ -32,16 +21,48 @@
           matInput
           type="text"
           required
-          formControlName="correoElectronico"
+          formControlName="correo"
         />
       </mat-form-field>
 
       <mat-form-field class="col-12">
         <mat-label>Contraseña</mat-label>
+        <!-- Se enlazan con el formControlName a las propiedades en mi componente -->
         <input
+          matInput
+          type="password"
+          required
+          formControlName="contraseña"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Nombre de la empresa</mat-label>
+        <input
+        type="text"
         matInput
         required
-        formControlName="contraseña"
+        formControlName="nombre"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Tipo de empresa</mat-label>
+        <input
+        type="text"
+        matInput
+        required
+        formControlName="tipo"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Descripcion de la empresa</mat-label>
+        <input
+        type="text"
+        matInput
+        required
+        formControlName="descripcion"
         >
       </mat-form-field>
     </form>

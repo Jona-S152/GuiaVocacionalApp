@@ -1,7 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { UserRegistrer } from '../../interfaces/UserRegistrer';
 import { Router } from '@angular/router';
+import { UserRegistrer } from '../../interfaces/UserRegistrer.interface';
+import { CompanyRegistrer } from '../../interfaces/CompanyRegistrer.interface';
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'company-registration',
@@ -11,24 +14,38 @@ import { Router } from '@angular/router';
 export class CompanyRegistrationComponent {
 
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   // Formato para enlazar al formulario
-  public userRegistrerForm = new FormGroup({
-    cedula : new FormControl<string>('', { nonNullable: true }),
-    nombreUsuario : new FormControl<string>(''),
-    correoElectronico: new FormControl<string>(''),
-    contraseña : new FormControl<string>('', { nonNullable: true }),
+  public companyRegistrerForm = new FormGroup({
+    nickname : new FormControl<string>('', { nonNullable: true }),
+    correo : new FormControl<string>('', { nonNullable: true }),
+    contraseña: new FormControl<string>('', { nonNullable: true }),
+    nombre : new FormControl<string>('', { nonNullable: true }),
+    tipo: new FormControl<string>('', { nonNullable: true }),
+    descripcion: new FormControl<string>('', { nonNullable: true })
   });
 
-  public get currentUserForm() : UserRegistrer {
-    const user = this.userRegistrerForm.value as UserRegistrer
-    return user
+  public get currentCompanyForm() : CompanyRegistrer {
+    const company = this.companyRegistrerForm.value as CompanyRegistrer
+    // company.rol = 'EMPRESA'
+    return company
   }
 
   public onRegistrer(){
     // TODO: Agregar servicio registrar empresa
+    if ( this.companyRegistrerForm.invalid ) return
 
-    this.router.navigate(['/auth/login']);
+    this.authService.createCompanyAccount(this.currentCompanyForm)
+      .subscribe({
+        next: (res) => console.log(res),
+        // next: () => this.router.navigate(['/auth/login']),
+        error: (message) => {
+          Swal.fire('Error', message, 'error')
+        }
+      });
+
+    // this.router.navigate(['/auth/login']);
   }
 
 }
